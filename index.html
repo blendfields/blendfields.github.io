@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BlendFields: Few-Shot Example-Driven Facial Modeling</title>
+
+    <!-- Compiled and minified CSS -->
+    <link
+        href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css"
+        rel="stylesheet">
+    <link
+        href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=B612+Mono&family=Open+Sans&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/additional.css">
+    <link rel="stylesheet" href="css/academicons.min.css" />
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="rest/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="rest/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="rest/favicon-16x16.png">
+    <link rel="manifest" href="rest/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h1 align="center">
+                    <i class="fa fa-blender" aria-hidden="true"></i>
+                    BlendFields: Few-Shot Example-Driven Facial Modeling
+                    <i class="fa fa-blender" aria-hidden="true"></i>
+                </h1>
+                <h2 align="center">
+                    Supplementary Material
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s1 center"></div>
+            <div class="col s10 center">
+                <div class="no-warp-metadata">Kacper Kania<sup>1,2,&#8224;</sup></div>
+                <div class="no-warp-metadata">Stephan J. Garbin<sup>3</sup></div>
+                <div class="no-warp-metadata">Andrea Tagliasacchi<sup>4,5,&#8225;</sup></div>
+                <div class="no-warp-metadata">Virginia Estellers<sup>3</sup></div>
+                <div class="no-warp-metadata">Kwang Moo Yi<sup>2</sup></div>
+                <div class="no-warp-metadata">Julien Valentin<sup>3</sup></div>
+                <div class="no-warp-metadata">Tomasz Trzciński<sup>1,6,7</sup></div>
+                <div class="no-warp-metadata">Marek Kowalski<sup>3</sup></div>
+            </div>
+            <div class="col s1 center"></div>
+        </div>
+        <div class="row">
+            <div class="col s1"> </div>
+            <div class="col s10 center">
+                <div class="no-warp-metadata">Warsaw University of Technology<sup>1</sup></div>
+                <div class="no-warp-metadata">University of British Columbia<sup>2</sup></div>
+                <div class="no-warp-metadata">Microsoft<sup>3</sup></div>
+                <div class="no-warp-metadata">Simon Fraser University<sup>4</sup></div>
+                <div class="no-warp-metadata">Google Brain<sup>5</sup></div>
+                <div class="no-warp-metadata">IDEAS NCBR<sup>6</sup></div>
+                <div class="no-warp-metadata">Tooploox<sup>7</sup></div>
+            </div>
+            <div class="col s1"> </div>
+        </div>
+        <div class="row" style="font-size: smaller">
+            <sup>&#8224;</sup>Work done during an internship at Microsoft
+            Research Cambridge.<br/>
+            <sup>&#8225;</sup>Work done at Simon Fraser University.
+        </div>
+
+        <div class="row">
+            <div class="col s12 center">
+                <a class="btn-floating grey waves-effect waves-light tooltipped disabled"
+                data-position="bottom" data-tooltip="Still waiting for an upload
+                ... :("
+                    href="">
+                    <i class="ai ai-arxiv"></i>
+                </a>
+                <a class="btn-floating grey waves-effect waves-light tooltipped"
+                    data-position="bottom" data-tooltip="Paper"
+                    href="/blendfields.pdf">
+                    <i class="fas fa-file-pdf"></i> Paper
+                </a>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col s1 center"></div>
+            <div class="col s12 center" style="padding: 0; margin: 0;">
+                <video style="width: 100%" loop muted autoplay>
+                    <source
+                        src="videos/concatenated/supplementary_expression.mp4"
+                        type="video/mp4">
+                </video>
+            </div>
+            <div class="col s1 center"></div>
+        </div>
+
+
+        <hr>
+
+        <div>
+            <div class="row">
+                <h2>Abstract</h2> 
+                <p>
+                    Generating faithful visualizations of human faces requires
+                    capturing both coarse and fine-level details of the face
+                    geometry and appearance. Existing methods are either
+                    data-driven, requiring an extensive corpus of data not
+                    publicly accessible to the research community, or fail to
+                    capture fine details because they rely on geometric face
+                    models that cannot represent fine-grained details in
+                    texture with a mesh discretization and linear deformation
+                    designed to model only a coarse face geometry. We introduce
+                    a method that bridges this gap by drawing inspiration from
+                    traditional computer graphics techniques. Unseen
+                    expressions are modeled by blending appearance from a
+                    sparse set of extreme poses. This blending is performed by
+                    measuring local volumetric changes in those expressions and
+                    locally reproducing their appearance whenever a similar
+                    expression is performed at test time.
+                    We show that our method generalizes to unseen expressions,
+                    adding fine-grained effects on top of smooth volumetric
+                    deformations of a face, and demonstrate how it generalizes
+                    beyond faces.
+                </p>
+                <div class="col s12 center">
+                    <video style="width: 100%; border: 1pt solid black;"
+                        controls>
+                        <source src="supplementary.mp4" type="video/mp4">
+                        Teaser
+                    </video>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <h1>Generated sequences</h1>
+            <p>
+                We present generated video sequences from models trained on
+                datasets used in the paper. We directly compare visualizations
+                generated from our method with baselines: <a
+                    href="https://arxiv.org/abs/2208.00949">VolTeMorph [1]</a>
+                trained on
+                all the frames in the data and VolTeMorph trained on the
+                single, most extreme expression. We start by showing
+                extrapolation
+                capabilities for all the methods, by modifying the expression
+                vector $\mathbf{e}$ vector directly. We then show the
+                renderings driven by an
+                external expression data from <a
+                    href="https://arxiv.org/abs/2207.11243">Multiface dataset
+                    [2]</a>. We end this
+                page by showing how these approaches perform on the synthetic
+                datasets. We additionally show results from baselines that base
+                on the conditioning signal in the form of the expression
+                vector. Our method generates the most realistic images while
+                providing the
+                controllability of the face.
+            </p>
+        </div>
+        <hr>
+        <div>
+            <div id="combined-container" class="row">
+                <div class="col s12">
+                    <div class="row">
+                        <h2 style="font-variant: small-caps;">
+                            Novel Expressions
+                        </h2>
+                    </div>
+                    <div class="row">
+                        <h3 style="font-variant: small-caps;">
+                            Subject #2183941
+                        </h3>
+                        <div class="col s12 centered">
+                            <video style="width: 100%" loop muted controls>
+                                <source
+                                    src="videos/concatenated/2183941_supplementary_expressions.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    <div class="row caption">
+                        <div class="col s4 center ours"> Ours</div>
+                        <div class="col s4 center">VolTeMorph<sub>avg</sub></div>
+                        <div class="col s4 center">VolTeMorph<sub>1</sub></div>
+                    </div>
+                    <div class="row">
+                        <h3 style="font-variant: small-caps;">
+                            Subject #5372021
+                        </h3>
+                        <div class="col s12 centered">
+                            <video style="width: 100%" loop muted controls>
+                                <source
+                                    src="videos/concatenated/5372021_supplementary_expressions.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    <div class="row caption">
+                        <div class="col s4 center ours"> Ours</div>
+                        <div class="col s4 center">VolTeMorph<sub>avg</sub></div>
+                        <div class="col s4 center">VolTeMorph<sub>1</sub></div>
+                    </div>
+                    <div class="row">
+                        <h3 style="font-variant: small-caps;">
+                            Subject #6795937
+                        </h3>
+                        <div class="col s12 centered">
+                            <video style="width: 100%" loop muted controls>
+                                <source
+                                    src="videos/concatenated/6795937_supplementary_expressions.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    <div class="row caption">
+                        <div class="col s4 center ours"> Ours</div>
+                        <div class="col s4 center">VolTeMorph<sub>avg</sub></div>
+                        <div class="col s4 center">VolTeMorph<sub>1</sub></div>
+                    </div>
+                    <div class="row">
+                        <h3 style="font-variant: small-caps;">
+                            Subject #7889059
+                        </h3>
+                        <div class="col s12 centered">
+                            <video style="width: 100%" loop muted controls>
+                                <source
+                                    src="videos/concatenated/7889059_supplementary_expressions.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    <div class="row caption">
+                        <div class="col s4 center ours"> Ours</div>
+                        <div class="col s4 center">VolTeMorph<sub>avg</sub></div>
+                        <div class="col s4 center">VolTeMorph<sub>1</sub></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div>
+            <div id="combined-container" class="row">
+                <div class="col s12">
+                    <div class="row">
+                        <h2 style="font-variant: small-caps;">
+                            Avatar Generation
+                        </h2>
+                    </div>
+                    <div class="row">
+                        <h3 style="font-variant: small-caps;">
+                            Subject #2183941
+                        </h3>
+                        <div class="col s12 centered">
+                            <video style="width: 100%" loop muted controls>
+                                <source
+                                    src="videos/concatenated/2183941_avatar.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    <div class="row caption">
+                        <div class="col s3 center">Ground Truth</div>
+                        <div class="col s3 center ours"> Ours</div>
+                        <div class="col s3 center">VolTeMorph<sub>avg</sub></div>
+                        <div class="col s3 center">VolTeMorph<sub>1</sub></div>
+                    </div>
+                    <div class="row">
+                        <h3 style="font-variant: small-caps;">
+                            Subject #5372021
+                        </h3>
+                        <div class="col s12 centered">
+                            <video style="width: 100%" loop muted controls>
+                                <source
+                                    src="videos/concatenated/5372021_avatar.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    <div class="row caption">
+                        <div class="col s3 center">Ground Truth</div>
+                        <div class="col s3 center ours"> Ours</div>
+                        <div class="col s3 center">VolTeMorph<sub>avg</sub></div>
+                        <div class="col s3 center">VolTeMorph<sub>1</sub></div>
+                    </div>
+                    <div class="row">
+                        <h3 style="font-variant: small-caps;">
+                            Subject #6795937
+                        </h3>
+                        <div class="col s12 centered">
+                            <video style="width: 100%" loop muted controls>
+                                <source
+                                    src="videos/concatenated/6795937_avatar.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    <div class="row caption">
+                        <div class="col s3 center">Ground Truth</div>
+                        <div class="col s3 center ours"> Ours</div>
+                        <div class="col s3 center">VolTeMorph<sub>avg</sub></div>
+                        <div class="col s3 center">VolTeMorph<sub>1</sub></div>
+                    </div>
+                    <div class="row">
+                        <h3 style="font-variant: small-caps;">
+                            Subject #7889059
+                        </h3>
+                        <div class="col s12 centered">
+                            <video style="width: 100%" loop muted controls>
+                                <source
+                                    src="videos/concatenated/7889059_avatar.mp4"
+                                    type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    <div class="row caption">
+                        <div class="col s3 center">Ground Truth</div>
+                        <div class="col s3 center ours"> Ours</div>
+                        <div class="col s3 center">VolTeMorph<sub>avg</sub></div>
+                        <div class="col s3 center">VolTeMorph<sub>1</sub></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div>
+            <h2>Free camera motion</h2>
+            <p>
+                As we work in the area of Neural Radiance Field, we can
+                generate
+                any camera movement which may be an application for future
+                communication devices.
+            </p>
+            <div class="row">
+                <div class="col s12 center nomargins">
+                    <video style="width: 100%" loop muted autoplay>
+                        <source src="videos/concatenated/supplementary_loop.mp4"
+                            type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <h3>Synthetic Data</h3>
+            <div class="row">
+                <p>
+                We show results from two sequences of a bending and twisting
+                cylinders with rubber-like material properties. We generated
+                these datasets using <a
+                    href="https://www.sidefx.com/">Houdini</a> and <a
+                    href="https://www.blender.org/">Blender</a>.
+                </p>
+            </div>
+            <div class="row">
+                <div class="col s12 center">
+                    <video style="width: 100%" muted controls>
+                        <source src="videos/concatenated/synthetic_twist.mp4"
+                            type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row caption">
+                <div class="col s3 center">
+                    Ground Truth
+                </div>
+                <div class="col s3 center ours">
+                    Ours
+                </div>
+                <div class="col s3 center">
+                    VolTeMorph
+                </div>
+                <div class="col s3 center">
+                    VolTeMorph
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 center">
+                    <video style="width: 100%" muted controls>
+                        <source src="videos/concatenated/synthetic_bend.mp4"
+                            type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="row caption">
+                <div class="col s3 center">
+                    Ground Truth
+                </div>
+                <div class="col s3 center ours">
+                    Ours
+                </div>
+                <div class="col s3 center">
+                    VolTeMorph<sub>avg</sub>
+                </div>
+                <div class="col s3 center">
+                    VolTeMorph<sub>1</sub>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                <h3>Bibtex</h3>
+                <pre>
+@inproceedings{kania2023blendfields,
+    title     = {{BlendFields: Few-Shot Example-Driven Facial Modeling}},
+    author    = {
+        Kania, Kacper 
+        and Garbin, Stephan J. 
+        and Tagliasacchi, Andrea 
+        and Estellers, Virginia 
+        and Yi, Kwang Moo 
+        and Valentin, Julien 
+        and Kowalski, Marek 
+        and Trzci{\'n}ski, Tomasz
+        and Kowalski, Marek 
+    },
+    booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+    year      = {2023}
+} </pre>
+            </div>
+            <div class="row">
+                <h3>Acknowledgements</h3>
+                <p>
+                    The work was partly supported by the National Sciences and Engineering Research Council of Canada (NSERC), the Digital Research Alliance of Canada, and Microsoft Mesh Labs. This research was funded by Microsoft Research through the EMEA PhD Scholarship Programme. We thank NVIDIA Corporation for granting us access to GPUs through NVIDIA's Academic Hardware Grants Program. This research was partially funded by National Science Centre, Poland (grant no 2020/39/B/ST6/01511 and 2022/45/B/ST6/02817).
+                </p>
+            </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        <!-- JavaScript Bundle with Popper -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+            crossorigin="anonymous"></script>
+
+        <script>
+            MathJax = {
+                tex: {
+                    inlineMath: [
+                        ['$', '$'],
+                        ['\\(', '\\)']
+                    ]
+                },
+                svg: {
+                    fontCache: 'global'
+                }
+            };
+        </script>
+        <script type="text/javascript" id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js">
+        </script>
+        <!-- Compiled and minified JavaScript -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
+        </script>
+        <script src="https://kit.fontawesome.com/2f4b26bfb0.js"
+            crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function () {
+                var elems = document.querySelectorAll('.tooltipped');
+                var instances = M.Tooltip.init(elems, options);
+            });
+
+            // Or with jQuery
+
+            $(document).ready(function () {
+                $('.tooltipped').tooltip();
+            });
+        </script>
+
+
+
+</body>
+
+</html>

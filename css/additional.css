@@ -1,0 +1,48 @@
+.bordered {
+    border: 1px solid black;
+}
+
+#dataset-group label {
+    display: inline;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+#dataset-ours label {
+    display: inline;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#dataset-hypernerf_ds label {
+    display: inline;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#dataset-hypernerf_ds_proj label {
+    display: inline;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.nomargins {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.7rem;
+}
+
+.caption {
+    padding-top: -1em !important;
+    margin-top: -1em !important;
+    font-size: 1.25rem;
+}
+
+.ours {
+    font-weight: bolder;
+}
